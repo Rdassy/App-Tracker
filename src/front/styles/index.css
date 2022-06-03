@@ -18,3 +18,9 @@
   box-shadow: 0 0 100px 4px #283340;
   border-radius: 10px;
 }
+.loginCard {
+  background-color: #283340;
+}
+.loginCard input {
+  background-color: #283340;
+}
