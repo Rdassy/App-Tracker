@@ -1,3 +1,20 @@
 /* 
     General Styles used on every website (Don't Repeat Yourself)
 */
+#app {
+  font-family: "Baloo Tammudu 2", sans-serif;
+  background-color: #283340;
+  color: #e2e8f0;
+}
+.navbar {
+  height: 100px;
+  background-color: rgb(38, 40, 46);
+}
+.dropdown-item {
+  color: #e2e8f0;
+}
+.dropdown-menu {
+  background-color: rgb(38, 40, 46);
+  box-shadow: 0 0 100px 4px #283340;
+  border-radius: 10px;
+}

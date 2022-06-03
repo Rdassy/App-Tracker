@@ -1,11 +1,10 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
-import { Home } from "./pages/dashboard";
 import injectContext from "./store/appContext";
-
-import { Navbar } from "./component/navbar.jsx";
 import { Footer } from "./component/footer";
+import { Login } from "./pages/login.jsx";
+import { DashBoard } from "./pages/dashboard.jsx";
 
 //create your first component
 const Layout = () => {
@@ -16,10 +15,12 @@ const Layout = () => {
 	return (
 		<div>
 			<BrowserRouter basename={basename}>
-					<Navbar />
 					<Switch>
 						<Route exact path="/">
-							<Home />
+							<Login />
+						</Route>
+						<Route exact path="/home">
+							<DashBoard />
 						</Route>
 						<Route>
 							<h1>Not found!</h1>

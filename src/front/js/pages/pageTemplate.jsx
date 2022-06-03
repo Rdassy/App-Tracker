@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Link, useParams, useHistory } from "react-router-dom";
 import { Context } from "../store/appContext";
-import { Navbar } from "../component/navbar.jsx";
+import { Navbar } from "./component/navbar.jsx";
 
 export const PageName = (props) => {
   //react declarations
