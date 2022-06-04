@@ -1,6 +1,9 @@
 /* 
     General Styles used on every website (Don't Repeat Yourself)
 */
+html {
+  background-color: #283340;
+}
 body {
   overflow-x: hidden;
 }
@@ -44,4 +47,15 @@ body {
 }
 .nav-pills .nav-link:hover {
   color: #255da7;
+}
+.appbtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  margin: 1px;
+  box-shadow: 0 0 15px 4px rgba(5, 10, 20, 30.06);
+  border-radius: 15px;
+  width: 100%;
+  text-transform: uppercase;
 }
