@@ -21,7 +21,7 @@ class User(db.Model):
 
 class Links(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     link_type = db.Column(db.String(255), nullable=False)
     link = db.Column(db.String(255), nullable = True)
     user = db.relationship("User")
@@ -36,7 +36,7 @@ class Links(db.Model):
 
 class Application(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     job_title = db.Column(db.String(255), nullable=False)
     company = db.Column(db.String(255), nullable=False)
     date_created = db.Column(db.String(255), nullable=False)
@@ -63,11 +63,11 @@ class Application(db.Model):
             "job_type":self.job_type
         }
 
-class Notes(db.Model):
+class Note(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    application_id = db.Column(db.Integer, db.ForeignKey('application.id'))
-    note = db.Column(db.Text, nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    application_id = db.Column(db.Integer, db.ForeignKey('application.id'), nullable=False)
+    note_text = db.Column(db.Text, nullable=False)
     application = db.relationship("Application")
     user = db.relationship("User")
 
@@ -75,14 +75,14 @@ class Notes(db.Model):
         return {
             "id": self.id,
             "application_id": self.application_id,
-            "note": self.note,
+            "note_text": self.note_text,
             "user_id":self.user_id
         }
 
 class Interaction(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    application_id = db.Column(db.Integer, db.ForeignKey('application.id'))
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    application_id = db.Column(db.Integer, db.ForeignKey('application.id'), nullable=False)
     interaction_type = db.Column(db.String(255), nullable=False)
     date = db.Column(db.String(255), nullable=False)
     comment = db.Column(db.Text, nullable=False)
