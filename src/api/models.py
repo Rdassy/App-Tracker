@@ -19,11 +19,11 @@ class User(db.Model):
             "last_name":self.last_name,
         }
 
-class Links(db.Model):
+class Link(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     link_type = db.Column(db.String(255), nullable=False)
-    link = db.Column(db.String(255), nullable = True)
+    link_url = db.Column(db.String(255), nullable = True)
     user = db.relationship("User")
 
     def serialize(self):
@@ -31,7 +31,7 @@ class Links(db.Model):
             "id": self.id,
             "user_id": self.user_id,
             "link_type":self.link_type,
-            "link":self.link
+            "link_url":self.link_url
         }
 
 class Application(db.Model):
