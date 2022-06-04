@@ -29,6 +29,7 @@ body {
   font-family: "Baloo Tammudu 2", sans-serif;
   background-color: #283340;
   color: #e2e8f0;
+  width: 100%;
 }
 .navbar {
   height: 100px;
