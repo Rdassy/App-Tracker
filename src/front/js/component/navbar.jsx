@@ -12,7 +12,7 @@ export const Navbar = (props) => {
   const [name, setName] = useState("BRIAN");
 
   return (
-    <nav className="navbar navbar-expand-lg">
+    <nav className="sticky-top navbar navbar-expand-lg">
       <div class="container-fluid">
         <h1 className="mt-4">WELCOME: {name}</h1>
         <div class="dropdown">
