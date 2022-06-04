@@ -111,10 +111,11 @@ def get_notes():
     return jsonify(serial)
 
 @api.route("/interaction", methods=["GET"])
-# @jwt_required()
+@jwt_required()
 def get_interaction():
-    # current_user_id=get_jwt_identity()
-    # user = User.query.get()
-    interactions = Interaction.query.filter_by(application_id=3).all()
+    current_user_id=get_jwt_identity()
+    user = User.query.get(current_user_id)
+    application_id = request.json.get("application_id")
+    interactions = Interaction.query.filter_by(user_id = user.id, application_id = application_id).all()
     serial = [i.serialize() for i in interactions]
     return jsonify(serial)
