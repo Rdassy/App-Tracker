@@ -1,14 +1,11 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Link, useParams, useHistory } from "react-router-dom";
 import { Context } from "../store/appContext";
-<<<<<<< HEAD
 import { Navbar } from "../component/navbar.jsx";
-import { Social } from '../component/social.jsx';
-import { JobLinks } from '../component/jobLinks.jsx';
+import { Social } from "../component/social.jsx";
+import { JobLinks } from "../component/jobLinks.jsx";
 
-=======
 import { LoginBanner } from "../component/loginBanner.jsx";
->>>>>>> 9926ee99a0f0a9c1118627c9839b4a0b3c0608a9
 
 export const Login = () => {
   //react declarations
@@ -23,10 +20,6 @@ export const Login = () => {
     <div className="dashBody w-100">
       <LoginBanner />
       <div className="dashBoardHome">
-<<<<<<< HEAD
-      <Social />
-      <JobLinks />
-=======
         <div className="">
           <ul
             class="nav nav-pills mb-3 justify-content-center mt-4"
@@ -142,7 +135,6 @@ export const Login = () => {
             </div>
           </div>
         </div>
->>>>>>> 9926ee99a0f0a9c1118627c9839b4a0b3c0608a9
       </div>
     </div>
   );

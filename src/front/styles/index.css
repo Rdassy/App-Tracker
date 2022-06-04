@@ -1,6 +1,12 @@
 /* 
     General Styles used on every website (Don't Repeat Yourself)
 */
+html {
+  background-color: #283340;
+}
+body {
+  overflow-x: hidden;
+}
 #app {
   font-family: "Baloo Tammudu 2", sans-serif;
   background-color: #283340;
@@ -38,9 +44,6 @@
   background-color: #283340;
   border-bottom: 2px solid #255da7;
   color: #255da7;
-}
-body {
-  overflow-x: hidden;
 }
 .nav-pills .nav-link:hover {
   color: #255da7;
