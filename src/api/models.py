@@ -2,7 +2,7 @@ from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
 
-class user(db.Model):
+class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(120), unique=True, nullable=False)
     first_name = db.Column(db.String(255), nullable = False)
@@ -20,12 +20,12 @@ class user(db.Model):
             "last_name":self.last_name,
         }
 
-class links(db.Model):
+class Links(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     link_type = db.Column(db.String(255))
     link = db.Column(db.String(255), nullable = True)
-    user = db.relationship("user")
+    user = db.relationship("User")
 
     def serialize(self):
         return {
@@ -35,7 +35,7 @@ class links(db.Model):
             "link":self.link
         }
 
-class application(db.Model):
+class Application(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     job_title = db.Column(db.String(255))
@@ -45,9 +45,9 @@ class application(db.Model):
     req_id = db.Column(db.String(255))
     description =  db.Column(db.Text)
     status = db.Column(db.String(255))
-    experience experience = db.Column(db.String(255))
+    experience = db.Column(db.String(255))
     job_type  = db.Column(db.String(255))
-    user = db.relationship("user")
+    user = db.relationship("User")
 
     def serialize(self):
         return {
@@ -64,11 +64,11 @@ class application(db.Model):
             "job_type":self.job_type
         }
 
-class notes(db.Model):
+class Notes(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     application_id = db.Column(db.Integer, db.ForeignKey('application.id'))
     note = db.Column(db.Text)
-    user = db.relationship("user")
+    application = db.relationship("Application")
 
     def serialize(self):
         return {
@@ -77,13 +77,13 @@ class notes(db.Model):
             "note": self.note
         }
 
-class interaction(db.Model):
+class Interaction(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     application_id = db.Column(db.Integer, db.ForeignKey('application.id'))
     interaction_type = db.Column(db.String(255))
     date = db.Column(db.String(255))
     comment = db.Column(db.Text)
-    user = db.relationship("user")
+    application = db.relationship("Application")
 
     def serialize(self):
         return {
