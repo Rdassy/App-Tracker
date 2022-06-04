@@ -22,7 +22,7 @@ export const AppliedJobs = (props) => {
   const handleShow = () => setShow(true);
 
   return (
-    <div className="appFeed bg-dark p-5">
+    <div className="appFeed bg-dark px-3">
       <Stack gap={1}>
         <Button
           className="appbtn py-4 my-3"

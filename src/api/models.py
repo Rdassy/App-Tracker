@@ -65,15 +65,18 @@ class Application(db.Model):
 
 class Notes(db.Model):
     id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     application_id = db.Column(db.Integer, db.ForeignKey('application.id'))
     note = db.Column(db.Text, nullable=False)
     application = db.relationship("Application")
+    user = db.relationship("User")
 
     def serialize(self):
         return {
             "id": self.id,
             "application_id": self.application_id,
-            "note": self.note
+            "note": self.note,
+            "user_id":self.user_id
         }
 
 class Interaction(db.Model):

@@ -17,7 +17,7 @@ export const DashBoard = () => {
   return (
     <div className="dashBody wrap w-100">
       <Navbar />
-      <div className="dashBoardHome justify-content-around container-fluid d-flex flex-wrap">
+      <div className="dashBoardHome justify-content-around container-fluid d-sm-flex flex-wrap">
         <div className="col-md-7 mt-5">
           <AppliedJobs />
         </div>

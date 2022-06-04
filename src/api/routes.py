@@ -4,9 +4,21 @@ This module takes care of starting the API Server, Loading the DB and Adding the
 from flask import Flask, request, jsonify, url_for, Blueprint
 from api.models import db, User, Application, Links, Notes, Interaction
 from api.utils import generate_sitemap, APIException
+from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
 
 api = Blueprint('api', __name__)
 
+@api.route("/token", methods=["POST"])
+def create_token():
+    if request.json is None:
+        return jsonify({"msg": "Body Empty!"}), 401
+    email = request.json.get("email", None)
+    password = request.json.get("password", None)
+    user = User.query.filter_by(email=email, password=password).first()
+    if user is None:
+        raise APIException("User Not Found!")
+    access_token = create_access_token(identity=user.id)
+    return jsonify({"token": access_token, "user_id": user.id})
 
 @api.route("/user", methods=["POST"])
 def create_user():
@@ -70,45 +82,31 @@ def create_interaction():
     db.session.commit()
     return jsonify(**interaction.serialize())
 
-@api.route("/token", methods=["POST"])
-def create_token():
-    if request.json is None:
-        return jsonify({"msg": "Body Empty!"}), 401
-    email = request.json.get("email", None)
-    password = request.json.get("password", None)
-    user = User.query.filter_by(email=email, password=password).first()
-    if user is None:
-        raise APIException("User Not Found!")
-    access_token = create_access_token(identity=user.id)
-    return jsonify({"token": access_token, "user_id": user.id})
-
 @api.route("/application", methods=["GET"])
-# @jwt_required()
+@jwt_required()
 def get_applications():
-    # current_user_id=get_jwt_identity()
-    # user = User.query.get()
-    applications = Application.query.filter_by(user_id = 1).all()
-    # for i in applications:
-    #     print("????????????????????????????????????????????????????????????????????????????????", i.serialize())
-    # print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!",serial)
+    current_user_id=get_jwt_identity()
+    user = User.query.get(current_user_id)
+    applications = Application.query.filter_by(user_id = user.id).all()
     serial = [i.serialize() for i in applications]
     return jsonify(serial)
 
 @api.route("/links", methods=["GET"])
-# @jwt_required()
+@jwt_required()
 def get_links():
-    # current_user_id=get_jwt_identity()
-    # user = User.query.get()
-    links = Links.query.filter_by(user_id=1).all()
+    current_user_id=get_jwt_identity()
+    user = User.query.get(current_user_id)
+    links = Links.query.filter_by(user_id=user.id).all()
     serial = [i.serialize() for i in links]
     return jsonify(serial)
 
 @api.route("/notes", methods=["GET"])
-# @jwt_required()
+@jwt_required()
 def get_notes():
-    # current_user_id=get_jwt_identity()
-    # user = User.query.get()
-    notes = Notes.query.filter_by(application_id=1).all()
+    current_user_id=get_jwt_identity()
+    user = User.query.get(current_user_id)
+    application_id = request.json.get("application_id")
+    notes = Notes.query.filter_by(user_id = user.id, application_id=application_id).all()
     serial = [i.serialize() for i in notes]
     return jsonify(serial)
 
