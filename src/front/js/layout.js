@@ -2,7 +2,6 @@ import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import injectContext from "./store/appContext";
-import { Footer } from "./component/footer";
 import { Login } from "./pages/login.jsx";
 import { DashBoard } from "./pages/dashboard.jsx";
 
@@ -26,7 +25,6 @@ const Layout = () => {
 							<h1>Not found!</h1>
 						</Route>
 					</Switch>
-					<Footer />
 			</BrowserRouter>
 		</div>
 	);
