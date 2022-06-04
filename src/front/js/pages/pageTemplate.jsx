@@ -2,6 +2,9 @@ import React, { useState, useEffect, useContext } from "react";
 import { Link, useParams, useHistory } from "react-router-dom";
 import { Context } from "../store/appContext";
 import { Navbar } from "./component/navbar.jsx";
+import { Social } from "../component/social.jsx";
+import { JobLinks } from '../component/jobLinks.jsx';
+
 
 export const PageName = (props) => {
   //react declarations
@@ -19,7 +22,6 @@ export const PageName = (props) => {
   return (
     <div className="dashBody w-100">
       <div className="dashBoardHome">
-        ADD PAGE CONTENT HERE!!!!!!!!!!!!!!!!!!!!!!!!!
       </div>
     </div>
   );
