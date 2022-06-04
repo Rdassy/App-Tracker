@@ -3,6 +3,8 @@ import { Link, useParams, useHistory } from "react-router-dom";
 import { Context } from "../store/appContext";
 import Stack from 'react-bootstrap/Stack';
 import Form from 'react-bootstrap/Form'
+import '../../styles/index.css';
+
 
 export const Social = (props) => {
     //react declarations

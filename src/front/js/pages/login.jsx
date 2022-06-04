@@ -4,6 +4,8 @@ import { Context } from "../store/appContext";
 import { Navbar } from "../component/navbar.jsx";
 import { Social } from '../component/social.jsx';
 import { JobLinks } from '../component/jobLinks.jsx';
+import { AppliedJobs } from '../component/appliedJobs.jsx'
+
 import { LoginBanner } from "../component/loginBanner.jsx";
 
 
@@ -20,6 +22,7 @@ export const Login = () => {
     <div className="dashBody w-100">
       <LoginBanner />
       <div className="dashBoardHome">
+      <AppliedJobs />
       <Social />
       <JobLinks />
       </div>

@@ -3,7 +3,7 @@ import { Link, useParams, useHistory } from "react-router-dom";
 import { Context } from "../store/appContext";
 import Stack from 'react-bootstrap/Stack';
 import Form from 'react-bootstrap/Form'
-import '../component/jobLink.css';
+import '../../styles/index.css';
 
 export const JobLinks = (props) => {
     //react declarations
