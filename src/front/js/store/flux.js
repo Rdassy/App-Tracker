@@ -1,3 +1,4 @@
+import { toast } from "react-toastify";
 const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {},
@@ -35,13 +36,15 @@ const getState = ({ getStore, getActions, setStore }) => {
           throw "unknown error";
         }
       },
-      createUser: async (email, password) => {
+      createUser: async (email, password, first_name, last_name) => {
         const actions = getActions();
         const options = {
           method: "POST",
           body: JSON.stringify({
             email: email,
             password: password,
+            first_name: first_name,
+            last_name: last_name,
           }),
         };
         const payload = await actions._fetch(`/api/user`, options);
@@ -54,7 +57,17 @@ const getState = ({ getStore, getActions, setStore }) => {
           body: JSON.stringify({ email: email, password: password }),
         };
         const payload = await actions._fetch(`/api/token`, options);
-        actions.setSessionStore(payload.token, payload.user_id, payload.role);
+        actions.setSessionStore(payload.token, payload.user_id);
+        return payload;
+      },
+      getApplications: async (email, password) => {
+        const actions = getActions();
+        const options = {
+          method: "POST",
+          body: JSON.stringify({ email: email, password: password }),
+        };
+        const payload = await actions._fetch(`/api/token`, options);
+        actions.setSessionStore(payload.token, payload.user_id);
         return payload;
       },
     },
