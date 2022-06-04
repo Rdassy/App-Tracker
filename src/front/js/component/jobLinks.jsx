@@ -15,14 +15,14 @@ export const JobLinks = (props) => {
   const [name, setName] = useState("BRIAN");
 
   return (
-    <div className="my-5">
+    <div className="appFeed bg-dark px-3 py-2">
       <Stack gap={1}>
-        <Form.Control className="me-auto" placeholder="Link to Linkedin..." />
-        <Form.Control className="me-auto" placeholder="Link to Indeed..." />
-        <Form.Control className="me-auto" placeholder="Link to Job Site..." />
-        <Form.Control className="me-auto" placeholder="Link to Job Site..." />
-        <Form.Control className="me-auto" placeholder="Link to Job Site..." />
-        <Form.Control className="me-auto" placeholder="Link to Job Site..." />
+        <Form.Control className="me-auto my-2" placeholder="Link to Linkedin..." />
+        <Form.Control className="me-auto my-2" placeholder="Link to Indeed..." />
+        <Form.Control className="me-auto my-2" placeholder="Link to Job Site..." />
+        <Form.Control className="me-auto my-2" placeholder="Link to Job Site..." />
+        <Form.Control className="me-auto my-2" placeholder="Link to Job Site..." />
+        <Form.Control className="me-auto my-2" placeholder="Link to Job Site..." />
       </Stack>
     </div>
   );

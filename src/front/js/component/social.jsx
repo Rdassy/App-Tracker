@@ -14,30 +14,30 @@ export const Social = (props) => {
   const [name, setName] = useState("BRIAN");
 
   return (
-    <div className="my-5">
+    <div className="appFeed bg-dark px-3 py-2">
       <Stack gap={1}>
         <Form.Control
-          className="me-auto"
+          className="me-auto my-2"
           placeholder="Link to your Linkedin Profile..."
         />
         <Form.Control
-          className="me-auto"
+          className="me-auto my-2"
           placeholder="Link to your GitHub Profile..."
         />
         <Form.Control
-          className="me-auto"
+          className="me-auto my-2"
           placeholder="Link to your Portfolio ..."
         />
         <Form.Control
-          className="me-auto"
+          className="me-auto my-2"
           placeholder="Link to your Resume..."
         />
         <Form.Control
-          className="me-auto"
+          className="me-auto my-2"
           placeholder="Link to your Twitter Profile..."
         />
         <Form.Control
-          className="me-auto"
+          className="me-auto my-2"
           placeholder="Link your Online Presence..."
         />
       </Stack>
