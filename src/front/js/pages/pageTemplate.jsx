@@ -4,6 +4,7 @@ import { Context } from "../store/appContext";
 import { Navbar } from "./component/navbar.jsx";
 import { Social } from "../component/social.jsx";
 import { JobLinks } from '../component/jobLinks.jsx';
+import { AppliedJobs } from '../component/appliedJobs.jsx'
 
 
 export const PageName = (props) => {

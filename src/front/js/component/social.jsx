@@ -3,6 +3,8 @@ import { Link, useParams, useHistory } from "react-router-dom";
 import { Context } from "../store/appContext";
 import Stack from 'react-bootstrap/Stack';
 import Form from 'react-bootstrap/Form'
+import '../../styles/index.css';
+
 
 export const Social = (props) => {
     //react declarations
@@ -20,7 +22,6 @@ export const Social = (props) => {
             <Form.Control className="me-auto" placeholder="Link to your Portfolio ..." /> 
             <Form.Control className="me-auto" placeholder="Link to your Resume..." /> 
             <Form.Control className="me-auto" placeholder="Link to your Twitter Profile..." /> 
-            <Form.Control className="me-auto" placeholder="Link your Online Presence..." /> 
         </Stack>
 
 

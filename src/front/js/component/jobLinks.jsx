@@ -3,7 +3,7 @@ import { Link, useParams, useHistory } from "react-router-dom";
 import { Context } from "../store/appContext";
 import Stack from 'react-bootstrap/Stack';
 import Form from 'react-bootstrap/Form'
-import '../component/jobLink.css';
+import '../../styles/index.css';
 
 export const JobLinks = (props) => {
     //react declarations
@@ -18,7 +18,6 @@ export const JobLinks = (props) => {
         <Stack gap={1} >
             <Form.Control className="me-auto" placeholder="Link to Linkedin..." /> 
             <Form.Control className="me-auto" placeholder="Link to Indeed..." /> 
-            <Form.Control className="me-auto" placeholder="Link to Job Site..." /> 
             <Form.Control className="me-auto" placeholder="Link to Job Site..." /> 
             <Form.Control className="me-auto" placeholder="Link to Job Site..." /> 
             <Form.Control className="me-auto" placeholder="Link to Job Site..." /> 

@@ -4,6 +4,7 @@ import { Context } from "../store/appContext";
 import { Navbar } from "../component/navbar.jsx";
 import { Social } from '../component/social.jsx';
 import { JobLinks } from '../component/jobLinks.jsx';
+import { AppliedJobs } from '../component/appliedJobs.jsx'
 
 export const DashBoard = () => {
   //react declarations
@@ -17,6 +18,7 @@ export const DashBoard = () => {
     <div className="dashBody w-100">
       <Navbar />
       <div className="dashBoardHome">
+      <AppliedJobs />
       <Social />
       <JobLinks />
         Content here
