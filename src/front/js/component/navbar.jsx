@@ -14,10 +14,10 @@ export const Navbar = (props) => {
   return (
     <nav className="sticky-top navbar navbar-expand-lg">
       <div class="container-fluid">
-        <h1 className="mt-4">WELCOME: {name}</h1>
+        <h1 className="ms-3 mt-4">WELCOME: {name}</h1>
         <div class="dropdown">
           <button
-            class="btn btn-lg btn-secondary"
+            class="btn btn-lg btn-secondary me-4"
             type="button"
             id="dropdownMenuButton1"
             data-bs-toggle="dropdown"
