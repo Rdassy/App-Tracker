@@ -24,3 +24,24 @@
 .loginCard input {
   background-color: #283340;
 }
+.form-control:focus {
+  background-color: #283340;
+  color: #e2e8f0;
+}
+.form-control {
+  color: #e2e8f0;
+}
+.nav-link {
+  color: #e2e8f0;
+}
+.nav-pills .nav-link.active {
+  background-color: #283340;
+  border-bottom: 2px solid #255da7;
+  color: #255da7;
+}
+body {
+  overflow-x: hidden;
+}
+.nav-pills .nav-link:hover {
+  color: #255da7;
+}
