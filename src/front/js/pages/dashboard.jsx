@@ -17,11 +17,11 @@ export const DashBoard = () => {
   return (
     <div className="dashBody wrap w-100">
       <Navbar />
-      <div className="dashBoardHome justify-content-between container-fluid d-flex flex-wrap">
-        <div className="col-md-8">
+      <div className="dashBoardHome justify-content-around container-fluid d-flex flex-wrap">
+        <div className="col-md-7 mt-5">
           <AppliedJobs />
         </div>
-        <div className="col-md-4">
+        <div className="col-md-4 mt-5">
           <Social />
           <JobLinks />
         </div>
