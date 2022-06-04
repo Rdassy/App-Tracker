@@ -87,5 +87,32 @@ def create_token():
 def get_applications():
     # current_user_id=get_jwt_identity()
     # user = User.query.get()
-    applications = Application.query.filter_by(user_id=5).first()
-    return jsonify(applications.serialize())
+    applications = Application.query.filter_by(user_id = 1).all()
+    for i in applications:
+        print("????????????????????????????????????????????????????????????????????????????????", i.serialize())
+    # print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!",serial)
+    return jsonify(applications)
+
+@api.route("/links", methods=["GET"])
+# @jwt_required()
+def get_links():
+    # current_user_id=get_jwt_identity()
+    # user = User.query.get()
+    links = Links.query.filter_by(user_id=5).first()
+    return jsonify(links)
+
+@api.route("/notes", methods=["GET"])
+# @jwt_required()
+def get_notes():
+    # current_user_id=get_jwt_identity()
+    # user = User.query.get()
+    notes = Notes.query.filter_by(application_id=1).first()
+    return jsonify(notes)
+
+@api.route("/interaction", methods=["GET"])
+# @jwt_required()
+def get_interaction():
+    # current_user_id=get_jwt_identity()
+    # user = User.query.get()
+    interaction = Interaction.query.filter_by(application_id=1).first()
+    return jsonify(interaction)
