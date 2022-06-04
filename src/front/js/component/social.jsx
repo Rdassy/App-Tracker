@@ -20,7 +20,6 @@ export const Social = (props) => {
             <Form.Control className="me-auto" placeholder="Link to your Portfolio ..." /> 
             <Form.Control className="me-auto" placeholder="Link to your Resume..." /> 
             <Form.Control className="me-auto" placeholder="Link to your Twitter Profile..." /> 
-            <Form.Control className="me-auto" placeholder="Link your Online Presence..." /> 
         </Stack>
 
 

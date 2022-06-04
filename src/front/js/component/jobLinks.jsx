@@ -21,7 +21,6 @@ export const JobLinks = (props) => {
             <Form.Control className="me-auto" placeholder="Link to Job Site..." /> 
             <Form.Control className="me-auto" placeholder="Link to Job Site..." /> 
             <Form.Control className="me-auto" placeholder="Link to Job Site..." /> 
-            <Form.Control className="me-auto" placeholder="Link to Job Site..." /> 
         </Stack>
 
 
