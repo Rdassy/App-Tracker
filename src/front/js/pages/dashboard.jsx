@@ -4,6 +4,7 @@ import { Context } from "../store/appContext";
 import { Navbar } from "../component/navbar.jsx";
 import { Social } from "../component/social.jsx";
 import { JobLinks } from "../component/jobLinks.jsx";
+import { AppliedJobs } from "../component/appliedJobs.jsx";
 
 export const DashBoard = () => {
   //react declarations
@@ -16,11 +17,11 @@ export const DashBoard = () => {
   return (
     <div className="dashBody wrap w-100">
       <Navbar />
-      <div className="dashBoardHome container-fluid d-flex flex-wrap">
-        <div className="col-8">
-          <Social />
+      <div className="dashBoardHome justify-content-between container-fluid d-flex flex-wrap">
+        <div className="col-md-8">
+          <AppliedJobs />
         </div>
-        <div className="col-4">
+        <div className="col-md-4">
           <Social />
           <JobLinks />
         </div>

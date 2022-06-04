@@ -15,7 +15,7 @@ export const JobLinks = (props) => {
   const [name, setName] = useState("BRIAN");
 
   return (
-    <div className="bg-primary">
+    <div className="">
       <Stack gap={1}>
         <Form.Control className="me-auto" placeholder="Link to Linkedin..." />
         <Form.Control className="me-auto" placeholder="Link to Indeed..." />

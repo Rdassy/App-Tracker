@@ -14,7 +14,7 @@ export const Social = (props) => {
   const [name, setName] = useState("BRIAN");
 
   return (
-    <div className="bg-success">
+    <div className="">
       <Stack gap={1}>
         <Form.Control
           className="me-auto"
