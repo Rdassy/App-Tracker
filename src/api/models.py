@@ -22,7 +22,7 @@ class User(db.Model):
 class Links(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    link_type = db.Column(db.String(255))
+    link_type = db.Column(db.String(255), nullable=False)
     link = db.Column(db.String(255), nullable = True)
     user = db.relationship("User")
 
@@ -37,15 +37,15 @@ class Links(db.Model):
 class Application(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    job_title = db.Column(db.String(255))
-    company = db.Column(db.String(255))
-    date_created = db.Column(db.String(255))
-    location = db.Column(db.String(255))
-    req_id = db.Column(db.String(255))
-    description =  db.Column(db.Text)
-    status = db.Column(db.String(255))
-    experience = db.Column(db.String(255))
-    job_type  = db.Column(db.String(255))
+    job_title = db.Column(db.String(255), nullable=False)
+    company = db.Column(db.String(255), nullable=False)
+    date_created = db.Column(db.String(255), nullable=False)
+    location = db.Column(db.String(255), nullable=False)
+    req_id = db.Column(db.String(255), nullable=False)
+    description =  db.Column(db.Text, nullable=False)
+    status = db.Column(db.String(255), nullable=False)
+    experience = db.Column(db.String(255), nullable=False)
+    job_type  = db.Column(db.String(255), nullable=False)
     user = db.relationship("User")
 
     def serialize(self):
@@ -66,7 +66,7 @@ class Application(db.Model):
 class Notes(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     application_id = db.Column(db.Integer, db.ForeignKey('application.id'))
-    note = db.Column(db.Text)
+    note = db.Column(db.Text, nullable=False)
     application = db.relationship("Application")
 
     def serialize(self):
@@ -79,9 +79,9 @@ class Notes(db.Model):
 class Interaction(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     application_id = db.Column(db.Integer, db.ForeignKey('application.id'))
-    interaction_type = db.Column(db.String(255))
-    date = db.Column(db.String(255))
-    comment = db.Column(db.Text)
+    interaction_type = db.Column(db.String(255), nullable=False)
+    date = db.Column(db.String(255), nullable=False)
+    comment = db.Column(db.Text, nullable=False)
     application = db.relationship("Application")
 
     def serialize(self):
@@ -90,6 +90,5 @@ class Interaction(db.Model):
             "application_id": self.application_id,
             "interaction_type": self.interaction_type,
             "date": self.date,
-            "comment": self.comment,
-            "user_id": self.note
+            "comment": self.comment
         }
