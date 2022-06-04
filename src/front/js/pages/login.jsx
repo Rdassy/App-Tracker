@@ -70,7 +70,7 @@ export const Login = () => {
                             onChange={(e) => setEmail(e.target.value)}
                             placeholder="Example@example.com"
                             id="typeEmailX"
-                            class="form-control form-control-lg"
+                            class="form-control form-control-lg pt-3"
                           />
                           <label className="form-label mt-2" for="typeEmailX">
                             Email
@@ -84,7 +84,7 @@ export const Login = () => {
                             onChange={(e) => setPassword(e.target.value)}
                             placeholder="Enter Password (Case Sensitive)"
                             id="typePasswordX"
-                            class="form-control form-control-lg"
+                            class="form-control form-control-lg pt-3"
                           />
                           <label
                             className="form-label mt-2"
