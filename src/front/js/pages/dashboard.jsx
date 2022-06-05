@@ -14,6 +14,12 @@ export const DashBoard = () => {
   //declare states here vvvv
   const [state, setState] = useState("State");
 
+  const logStatus = JSON.parse(localStorage.getItem("session"));
+
+  if (logStatus === null) {
+    history.push("/");
+  }
+
   return (
     <div className="dashBody wrap w-100">
       <Navbar />

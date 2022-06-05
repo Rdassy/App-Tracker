@@ -1,7 +1,9 @@
-import { toast } from "react-toastify";
 const getState = ({ getStore, getActions, setStore }) => {
   return {
-    store: {},
+    store: {
+      applications: [],
+      notes: [],
+    },
     actions: {
       getCurrentSession: () => {
         const session = JSON.parse(localStorage.getItem("session"));
@@ -11,6 +13,19 @@ const getState = ({ getStore, getActions, setStore }) => {
         const payload = { token, user_id, roles };
         localStorage.setItem("session", JSON.stringify(payload));
         setStore({ session: payload });
+      },
+      clearSession: () => {
+        localStorage.removeItem("session");
+      },
+      getSelf: async () => {
+        const actions = getActions();
+        try {
+          const payload = await actions._fetch(`/api/user`);
+          return payload;
+        } catch (error) {
+          actions.clearSession();
+          return error;
+        }
       },
       _fetch: async (url, options = {}) => {
         const actions = getActions();
@@ -28,7 +43,6 @@ const getState = ({ getStore, getActions, setStore }) => {
           return await response.json();
         } else if (response.status >= 400 && response.status < 500) {
           const error = await response.json();
-          toast.error(error.message, { position: "top-center" });
           throw error;
         } else {
           alert("Unknown Error");
@@ -60,14 +74,69 @@ const getState = ({ getStore, getActions, setStore }) => {
         actions.setSessionStore(payload.token, payload.user_id);
         return payload;
       },
-      getApplications: async (email, password) => {
+      getApplications: async () => {
+        const actions = getActions();
+        const payload = await actions._fetch(`/api/application`);
+        setStore({ applications: payload });
+      },
+      editApp: async (
+        job_title,
+        company,
+        date_created,
+        location,
+        req_id,
+        description,
+        experience,
+        job_type,
+        job_status,
+        application_id
+      ) => {
+        const actions = getActions();
+        const options = {
+          method: "PUT",
+          body: JSON.stringify({
+            job_title: job_title,
+            company: company,
+            date_created: date_created,
+            location: location,
+            req_id: req_id,
+            description: description,
+            experience: experience,
+            job_type: job_type,
+            job_status: job_status,
+            application_id: application_id,
+          }),
+        };
+        const payload = await actions._fetch(`/api/application`, options);
+        return payload;
+      },
+      createApp: async (
+        job_title,
+        company,
+        date_created,
+        location,
+        req_id,
+        description,
+        experience,
+        job_type,
+        job_status
+      ) => {
         const actions = getActions();
         const options = {
           method: "POST",
-          body: JSON.stringify({ email: email, password: password }),
+          body: JSON.stringify({
+            job_title: job_title,
+            company: company,
+            date_created: date_created,
+            location: location,
+            req_id: req_id,
+            description: description,
+            experience: experience,
+            job_type: job_type,
+            job_status: job_status,
+          }),
         };
-        const payload = await actions._fetch(`/api/token`, options);
-        actions.setSessionStore(payload.token, payload.user_id);
+        const payload = await actions._fetch(`/api/application`, options);
         return payload;
       },
     },

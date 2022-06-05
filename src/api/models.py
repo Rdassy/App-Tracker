@@ -43,7 +43,7 @@ class Application(db.Model):
     location = db.Column(db.String(255), nullable=False)
     req_id = db.Column(db.String(255), nullable=False)
     description =  db.Column(db.Text, nullable=False)
-    status = db.Column(db.String(255), nullable=False)
+    job_status = db.Column(db.String(255), nullable=False)
     experience = db.Column(db.String(255), nullable=False)
     job_type  = db.Column(db.String(255), nullable=False)
     user = db.relationship("User")
@@ -58,7 +58,7 @@ class Application(db.Model):
             "location": self.location,
             "req_id": self.req_id,
             "description": self.description,
-            "status": self.status,
+            "job_status": self.job_status,
             "experience": self.experience,
             "job_type":self.job_type
         }

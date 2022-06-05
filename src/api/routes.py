@@ -43,19 +43,20 @@ def create_link():
     return jsonify(**link.serialize())
 
 @api.route("/application", methods=["POST"])
+@jwt_required()
 def create_application():
-    id = request.json.get("id", None)
-    user_id = request.json.get("user_id", None)
+    current_user_id=get_jwt_identity()
+    user = User.query.get(current_user_id)
     job_title = request.json.get("job_title", None)
     company = request.json.get("company", None)
     date_created = request.json.get("date_created", None)
     location = request.json.get("location", None)
     req_id = request.json.get("req_id", None)
     description = request.json.get("description", None)
-    status = request.json.get("status", None)
+    job_status = request.json.get("job_status", None)
     experience = request.json.get("experience", None)
     job_type  = request.json.get("job_type", None)
-    application = Application(id = id, user_id = user_id, job_title = job_title, company = company, date_created = date_created, location = location, req_id = req_id, description = description, status = status, experience = experience, job_type = job_type)
+    application = Application(user_id = user.id, job_title = job_title, company = company, date_created = date_created, location = location, req_id = req_id, description = description, job_status = job_status, experience = experience, job_type = job_type)
     db.session.add(application)
     db.session.commit()
     return jsonify(**application.serialize())
@@ -81,6 +82,13 @@ def create_interaction():
     db.session.add(interaction)
     db.session.commit()
     return jsonify(**interaction.serialize())
+
+@api.route("/user", methods=["GET"])
+@jwt_required()
+def get_self():
+    current_user_id=get_jwt_identity()
+    user = User.query.get(current_user_id)
+    return jsonify(user.serialize())
 
 @api.route("/application", methods=["GET"])
 @jwt_required()
@@ -162,7 +170,7 @@ def edit_application():
     location = request.json.get("location")
     req_id = request.json.get("req_id")
     description = request.json.get("description")
-    status = request.json.get("status")
+    job_status = request.json.get("job_status")
     experience = request.json.get("experience")
     job_type = request.json.get("job_type")
     application.job_title = job_title
@@ -171,7 +179,7 @@ def edit_application():
     application.location = location
     application.req_id = req_id
     application.description = description
-    application.status = status
+    application.job_status = job_status
     application.experience = experience
     application.job_type = job_type
     db.session.add(application)

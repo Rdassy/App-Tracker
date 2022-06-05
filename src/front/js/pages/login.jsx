@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { Link, useParams, useHistory } from "react-router-dom";
 import { Context } from "../store/appContext";
 import { Navbar } from "../component/navbar.jsx";
@@ -13,10 +15,15 @@ export const Login = () => {
   const { store, actions } = useContext(Context);
   const params = useParams();
   //declare states here vvvv
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+  const [firstName, setFirstName] = useState();
+  const [lastName, setLastName] = useState();
+  const logStatus = JSON.parse(localStorage.getItem("session"));
+
+  if (logStatus != null) {
+    history.push("/home");
+  }
 
   return (
     <div className="dashBody w-100">
@@ -99,31 +106,25 @@ export const Login = () => {
                             Password
                           </label>
                         </div>
-
-                        <p class="small mb-5 pb-lg-2">
-                          <a class="text-white-50" href="#!">
-                            Forgot password?
-                          </a>
-                        </p>
-
                         <button
                           class="btn btn-outline-light btn-lg px-5"
                           type="submit"
                           onClick={() => {
                             actions
                               .createNewSession(email, password)
-                              .then(history.push("/home"));
+                              .then((response) => {
+                                history.push("/home");
+                              })
+                              .catch((e) => {
+                                alert(e.message);
+                              });
                           }}
                         >
                           Login
                         </button>
-                      </div>
-
-                      <div>
-                        <p class="mb-0">
-                          Don't have an account?{" "}
-                          <a href="#!" class="text-white-50 fw-bold">
-                            Sign Up
+                        <p class="small mb-5 pb-lg-2 mt-4">
+                          <a class="text-white-50" href="#!">
+                            Forgot password?
                           </a>
                         </p>
                       </div>
@@ -204,11 +205,6 @@ export const Login = () => {
                             Last Name
                           </label>
                         </div>
-                        <p class="small mb-5 pb-lg-2">
-                          <a class="text-white-50" href="#!">
-                            Forgot password?
-                          </a>
-                        </p>
                         <button
                           class="btn btn-outline-light btn-lg px-5"
                           type="submit"
@@ -228,14 +224,11 @@ export const Login = () => {
                             } catch {}
                           }}
                         >
-                          Login
+                          Register
                         </button>
-                      </div>
-                      <div>
-                        <p class="mb-0">
-                          Don't have an account?{" "}
-                          <a href="#!" class="text-white-50 fw-bold">
-                            Sign Up
+                        <p class="small mb-5 pb-lg-2 mt-4">
+                          <a class="text-white-50" href="#!">
+                            Forgot password?
                           </a>
                         </p>
                       </div>
