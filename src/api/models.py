@@ -21,7 +21,7 @@ class User(db.Model):
 
 class Link(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id', ondelete="CASCADE"), nullable=False)
     link_type = db.Column(db.String(255), nullable=False)
     link_url = db.Column(db.String(255), nullable = True)
     user = db.relationship("User")
@@ -36,7 +36,7 @@ class Link(db.Model):
 
 class Application(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id', ondelete="CASCADE"), nullable=False)
     job_title = db.Column(db.String(255), nullable=False)
     company = db.Column(db.String(255), nullable=False)
     date_created = db.Column(db.String(255), nullable=False)
@@ -65,8 +65,8 @@ class Application(db.Model):
 
 class Note(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
-    application_id = db.Column(db.Integer, db.ForeignKey('application.id'), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id', ondelete="CASCADE"), nullable=False)
+    application_id = db.Column(db.Integer, db.ForeignKey('application.id', ondelete="CASCADE"), nullable=False)
     note_text = db.Column(db.Text, nullable=False)
     application = db.relationship("Application")
     user = db.relationship("User")
@@ -81,8 +81,8 @@ class Note(db.Model):
 
 class Interaction(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
-    application_id = db.Column(db.Integer, db.ForeignKey('application.id'), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id', ondelete="CASCADE"), nullable=False)
+    application_id = db.Column(db.Integer, db.ForeignKey('application.id', ondelete="CASCADE"), nullable=False)
     interaction_type = db.Column(db.String(255), nullable=False)
     date = db.Column(db.String(255), nullable=False)
     comment = db.Column(db.Text, nullable=False)

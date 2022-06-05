@@ -1,95 +1,35 @@
-# WebApp boilerplate with React JS and Flask API
+# Hack for the Future Project: Job Application Tracker
 
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io#https://github.com/4GeeksAcademy/react-flask-hello.git)
+## Context
 
-<p align="center">
-<a href="https://www.loom.com/share/f37c6838b3f1496c95111e515e83dd9b"><img src="https://github.com/4GeeksAcademy/flask-rest-hello/blob/main/docs/assets/how-to.png?raw=true?raw=true" /></a>
-</p>
+Hack for the Future is a hackathon organized by Bootup and focused on building tools that help people manage their day-to-day lives, navigate career transitions, and excel in their new careers. Think of tools that would help with time management, goal setting, productivity, continued education, and beyond. Many bootcamp graduates are going through their own career transitions and managing their own hectic lives - this hackathon was an opportunity to create innovative tools that could help bootcamp graduates.
 
-### Styles
+As all the members of our group were attempting to pivot from our respective careers at the time of this hackathon, we decided to build a tool to track the job applications completed by users. Spreadsheets are an acceptable solution, but it can become difficult to keep track of status updates along with the details of each job one applies to. App-Tracker is a quality of life application which aims at helpin job seekers to better keep track of their applications and also provide them with tools to quickly apply to positions.
 
-You can update the `styles/index.scss` or create new `.scss` files inside `styles/` and import them into your current scss or js files depending on your needs.
 
-### Components
+## Development
 
-Add more files into your `./src/js/components` or styles folder as you need them and import them into your current files as needed.
+This application was developed on [Gitpod.io](https://www.gitpod.io/) which provides an easy-to-use developing environment.
 
-💡Note: There is an example using the Context API inside `views/demo.js`;
+App-Tracker runs on the [Heroku](https://www.heroku.com/[) platform which allows for the app keep running for free on the entry-level pricing tier. 
+Using Gitpod.io and Heroku together allowed our team to not have to worry about running and linking a postgres database, as it was all automatically taken care of behind the scenes.
 
-### Views (Components)
+The back-end of the application was created using Python and Flask SQLAlchemy with Flask JWT authentication.
+The front-end was developed using JavaScript, React.js, Bootstrap.
 
-Add more files into your `./src/js/views` and import them in `./src/js/layout.jsx`.
+## Features
 
-### Context
+App-Tracker allows users to create a set of unique login credentials to access the application.
+Once logged in, users will be able to access the dashboard and start tracking job applications by clicking the "+" button and entering all the information relevant to the job posting. 
 
-This boilerplate comes with a centralized general Context API. The file `./src/js/store/flux.js` has a base structure for the store, we encourage you to change it and adapt it to your needs.
+Once added, each job application will remain on the left side of the dashboard, while the right side of the dashboard contains some tools to help job seekers keep frequently used URL's such as their Linkedin profile, Github repositories list, publically accessible resume and portfolio, and custom links.
 
-React Context [docs](https://reactjs.org/docs/context.html)
-BreathCode Lesson [view](https://content.breatheco.de/lesson/react-hooks-explained)
+## Challenges
 
-The `Provider` is already set. You can consume from any component using the useContext hook to get the `store` and `actions` from the Context. Check `/views/demo.js` to see a demo.
+Beyond the short 36 hours time frame, this hackathon presented a few challenges. Team members availability was definitely an issue as this was a remote event which did not require the participants to stay in the same location. Lack of sleep and fatigue had a big impact on progress during the second half of the project. Of course, many hours were spent reading through Flask and SQLAlchemy documentation as issues cropped up.
 
-```jsx
-import { Context } from "../store/appContext";
-const MyComponentSuper = () => {
-    //here you use useContext to get store and actions
-    const { store, actions } = useContext(Context);
-    return <div>{/* you can use your actions or store inside the html */}</div>;
-};
-```
+## Future Features
 
-### Back-End Manual Installation:
+If time was not a factor, the team had discussed potentially integrating authentication to the app through the Linkedin API, integration of several job platforms, and even a potential browser plugin to automatically keep track of job applications. 
 
-It is recomended to install the backend first, make sure you have Python 3.8, Pipenv and a database engine (Posgress recomended)
-
-1. Install the python packages: `$ pipenv install`
-2. Create a .env file based on the .env.example: `$ cp .env.example .env`
-3. Install your database engine and create your database, depending on your database you have to create a DATABASE_URL variable with one of the possible values, make sure yo replace the valudes with your database information:
-
-| Engine    | DATABASE_URL                                        |
-| --------- | --------------------------------------------------- |
-| SQLite    | sqlite:////test.db                                  |
-| MySQL     | mysql://username:password@localhost:port/example    |
-| Postgress | postgres://username:password@localhost:5432/example |
-
-4. Migrate the migrations: `$ pipenv run migrate` (skip if you have not made changes to the models on the `./src/api/models.py`)
-5. Run the migrations: `$ pipenv run upgrade`
-6. Run the application: `$ pipenv run start`
-
-### Backend Populate Table Users
-
-To insert test users in the database execute the following command:
-
-```sh
-$ flask insert-test-users 5
-```
-
-And you will see the following message:
-
-```
-  Creating test users
-  test_user1@test.com created.
-  test_user2@test.com created.
-  test_user3@test.com created.
-  test_user4@test.com created.
-  test_user5@test.com created.
-  Users created successfully!
-```
-
-To update with all yours tables you can edit the file app.py and go to the line 80 to insert the code to populate others tables
-
-### Front-End Manual Installation:
-
--   Make sure you are using node version 14+ and that you have already successfully installed and runned the backend.
-
-1. Install the packages: `$ npm install`
-2. Start coding! start the webpack dev server `$ npm run start`
-
-## Publish your website!
-
-This boilerplate it's 100% integrated with Herkou, just by pushing your changes to the heroku repository it will deploy: `$ git push heroku main`
-
-    	// "prettier-webpack-plugin": "^1.2.0",
-
-"dotenv-webpack": "^1.7.0",
-"friendly-errors-webpack-plugin": "^1.7.0",
+The latter was considered a bit too invasive and the team opted for user-provided input instead. There were also some less essential features discussed such as a summary of activity including counters, pre-populated cover letter and thank you note templates, follow-up reminders, and a curated social media feed targeted to job-seekers.

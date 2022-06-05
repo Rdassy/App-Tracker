@@ -134,7 +134,7 @@ def edit_user():
     current_user_id=get_jwt_identity()
     user = User.query.get(current_user_id)
     email = request.json.get("email")
-    password = request.json.get("password")
+    user.email = email
     db.session.add(user)
     db.session.commit()
     return jsonify("User successfully updated")
@@ -214,3 +214,25 @@ def edit_link():
     db.session.add(link)
     db.session.commit()
     return jsonify("Note successfully updated")
+
+@api.route("/user", methods=["DELETE"])
+@jwt_required()
+def delete_user():
+    current_user_id=get_jwt_identity()
+    user = User.query.get(current_user_id)    
+    db.session.delete(user)
+    db.session.commit()
+    return jsonify("User successfully deleted")
+
+@api.route("/application/<id>", methods=["DELETE"])
+@jwt_required()
+def delete_application(id):
+    response = {}
+    current_user_id=get_jwt_identity()
+    user = User.query.get(current_user_id)
+    application = Application.query.get(id)
+    response["id"] = application.id
+
+    db.session.delete(application)
+    db.session.commit()
+    return jsonify("Application successfully deleted")
