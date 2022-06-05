@@ -1,6 +1,6 @@
 # Hack for the Future Project: Job Application Tracker
 
-# You can access the app and try it for yourself [RIGHT HERE]:(https://hackathon-application-tracker.herokuapp.com/)
+# You can access the app and try it for yourself [RIGHT HERE](https://hackathon-application-tracker.herokuapp.com/)
 
 ## Context
 
