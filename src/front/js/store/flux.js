@@ -139,6 +139,14 @@ const getState = ({ getStore, getActions, setStore }) => {
         const payload = await actions._fetch(`/api/application`, options);
         return payload;
       },
+      deleteApp: async (id) => {
+        const actions = getActions();
+        const options = {
+          method: "DELETE",
+        };
+        const payload = await actions._fetch(`/api/application/${id}`, options);
+        return payload;
+      },
     },
   };
 };

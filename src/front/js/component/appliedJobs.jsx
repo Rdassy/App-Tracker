@@ -85,7 +85,9 @@ export const AppliedJobs = (props) => {
               handleShow();
             }}
           >
-            {app.job_title} @ {app.company}
+            <div>
+              {app.job_title} @ {app.company}
+            </div>
           </Button>
         ))}
         <Modal show={show} onHide={handleClose}>
@@ -257,6 +259,15 @@ export const AppliedJobs = (props) => {
               }}
             >
               Create Application
+            </Button>
+            <Button
+              variant="secondary"
+              onClick={() => {
+                actions.deleteApp(appId);
+                refreshPage();
+              }}
+            >
+              Delete
             </Button>
           </Modal.Footer>
         </Modal>

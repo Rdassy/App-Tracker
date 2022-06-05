@@ -232,7 +232,6 @@ def delete_application(id):
     user = User.query.get(current_user_id)
     application = Application.query.get(id)
     response["id"] = application.id
-
     db.session.delete(application)
     db.session.commit()
     return jsonify("Application successfully deleted")
