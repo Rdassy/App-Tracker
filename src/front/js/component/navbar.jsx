@@ -11,10 +11,20 @@ export const Navbar = (props) => {
   const [state, setState] = useState("State");
   const [name, setName] = useState("BRIAN");
 
+  useEffect(() => {
+    actions.getSelf().then((payload) => {
+      if (payload.msg == "Token has expired") {
+        actions.clearSession();
+      } else {
+        setName("Welcome: " + payload.first_name + " " + payload.last_name);
+      }
+    });
+  }, []);
+
   return (
     <nav className="sticky-top navbar navbar-expand-lg">
-      <div class="container-fluid">
-        <h1 className="ms-3 mt-4">WELCOME: {name}</h1>
+      <div class="w-100 d-flex justify-content-between">
+        <h1 className="ms-3 mt-4">{name}</h1>
         <div class="dropdown">
           <button
             class="btn btn-lg btn-secondary me-4"
@@ -29,14 +39,25 @@ export const Navbar = (props) => {
             class="dropdown-menu dropdown-menu-end mt-3"
             aria-labelledby="dropdownMenuButton1"
           >
-            <li>
-              <div class="dropdown-item">Action</div>
+            <li
+              onClick={() => {
+                {
+                  actions.clearSession(), history.push("/");
+                }
+              }}
+              className="navDrop btn text-center mx-auto w-100 fs-2"
+            >
+              Logout
             </li>
-            <li>
-              <div class="dropdown-item">Another action</div>
-            </li>
-            <li>
-              <div class="dropdown-item">Something else here</div>
+            <li
+              onClick={() => {
+                {
+                  actions.getApplications();
+                }
+              }}
+              className="navDrop btn text-center mx-auto w-100 fs-2"
+            >
+              GetApps
             </li>
           </ul>
         </div>
